@@ -1,8 +1,9 @@
 import styled from "styled-components"
-export default function Button({children,size}){
+
+export default function Button({children,size,...otherProps}){
 
     return(
-        <Botao size={size}>{children}</Botao>
+        <Botao {...otherProps} size={size}>{children}</Botao>
     )
 }
 const Botao=styled.button`

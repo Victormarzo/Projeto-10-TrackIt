@@ -2,15 +2,47 @@ import styled from "styled-components"
 import Button from "./Button"
 import Input from "./Input"
 import logo from "./img/Logo.svg"
+import {useState} from "react"
+import { ThreeDots  } from  'react-loader-spinner'
+
 export default function LoginScreen(){
-   
+   const [email,setEmail]=useState('')
+   const [password,setPassword]=useState('')
+   const [disabled,setDisabled]=useState('')
+   const [buttonInside,setButtonInside]=useState("Entrar")
+   function Login(e){
+        e.preventDefault();
+        let body={email,password};
+        setDisabled('disabled');
+        console.log(body)
+        setButtonInside(<ThreeDots 
+            height="80" 
+            width="80" 
+            radius="9"
+            color="#FFFFFF" 
+             />)
+
+
+   }
     return(
-        <Screen>
+        <Screen onSubmit={Login}>
             <img src={logo}></img>
-            <Input placeholder="email"></Input>
-            <Input placeholder="senha"></Input>
-            <Button>Entrar</Button>
+            <Input placeholder="email"
+            required type="email" 
+            value={email}
+            disabled={disabled}
+            onChange={e => setEmail(e.target.value)}>
+            </Input>
+            <Input placeholder="senha"
+            required type="password" 
+            value={password}
+            disabled={disabled}
+            onChange={e => setPassword(e.target.value)}>
+            </Input>
+            <Button
+            disabled={disabled}>{buttonInside}</Button>
             <p>Não tem uma conta? Cadastre-se!</p>
+            
         </Screen>
         
     )
@@ -20,7 +52,7 @@ const Week=styled.div`
     display: flex;
 
 `
-const Screen=styled.div`
+const Screen=styled.form`
     
   display:flex;
   flex-direction: column;
