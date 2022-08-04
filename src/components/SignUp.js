@@ -2,15 +2,17 @@ import styled from "styled-components"
 import Button from "./Button"
 import Input from "./Input"
 import logo from "./img/Logo.svg"
-export default function LoginScreen(){
+export default function SignUp(){
    
     return(
         <Screen>
             <img src={logo}></img>
             <Input placeholder="email"></Input>
             <Input placeholder="senha"></Input>
-            <Button>Entrar</Button>
-            <p>Não tem uma conta? Cadastre-se!</p>
+            <Input placeholder="nome"></Input>
+            <Input placeholder="foto"></Input>
+            <Button>Cadastrar</Button>
+            <p>Já tem uma conta? Faça login!</p>
         </Screen>
         
     )
