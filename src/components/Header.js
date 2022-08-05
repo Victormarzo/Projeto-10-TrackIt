@@ -13,7 +13,7 @@ export default function Header({profile}){
     )
 }
 const Menu=styled.div`
-    width: 375px;
+    width: 100vw;
     height: 70px;
     left: 0px;
     top: 0px;

@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
-export default function Title(){
-
+export default function Title({children}){
+    return(
+    <Titles>{children}</Titles>
+    )
 }
-const titles=styled.h1{
-    
-}
+const Titles=styled.div `
+    font-weight: 400;
+    font-size: 22.976px;
+    line-height: 29px;
+    color: #126BA5;
+    margin-top:100px;
+    margin-left:17px
+`

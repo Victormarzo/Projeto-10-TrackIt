@@ -32,7 +32,7 @@ export default function Footer(){
     )
 }
 const Menu=styled.div`
-    width: 375px;
+    width: 100vw;
     height: 70px;
     display: flex;
     justify-content: space-between;
