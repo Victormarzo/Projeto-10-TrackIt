@@ -3,7 +3,9 @@ import Button from "./Button"
 import Input from "./Input"
 import logo from "./img/Logo.svg"
 import {useState} from "react"
-import { ThreeDots  } from  'react-loader-spinner'
+import { postSignUp } from "../services/trackit"
+import { useParams,Link,useNavigate } from "react-router-dom";
+
 
 export default function SignUp(){
    const [disabled,setDisabled]=useState('')
@@ -11,19 +13,28 @@ export default function SignUp(){
    const [email,setEmail]=useState('')
    const [password,setPassword]=useState('')
    const [image,setImage]=useState('')
-   const [buttonInside,setButtonInside]=useState("Cadastrar")
+   const navigate = useNavigate();
     
    function SignIn(e){
         e.preventDefault();
         let body={email,password,image,name};
         setDisabled('disabled');
         console.log(body);
-        setButtonInside(<ThreeDots 
-            height="80" 
-            width="80" 
-            radius="9"
-            color="#FFFFFF" 
-             />);
+        postSignUp(body)
+        .then((answer)=>{
+            const token=answer.data.token;
+            const image=answer.data.image;
+            const authJSON = JSON.stringify({ token: token, image: image });
+            localStorage.setItem('trackit', authJSON);
+            alert("DEU BOA KRL")
+            navigate('/');
+        })
+        .catch((error) => {
+            alert("Email e/ou senha inválidos");
+            setDisabled('');
+            setPassword("");
+        })
+        
 
 
    }
@@ -53,9 +64,9 @@ export default function SignUp(){
                 value={image}
                 onChange={e => setImage(e.target.value)}>
             </Input>
-            <Button type="submit">{buttonInside}</Button>
+            <Button type="submit">Cadastrar</Button>
             
-            <p>Já tem uma conta? Faça login!</p>
+            <Link to={`/`}><p>Já tem uma conta? Faça login!</p></Link>
         </Screen>
         
     )

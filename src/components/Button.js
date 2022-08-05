@@ -1,9 +1,19 @@
 import styled from "styled-components"
+import { ThreeDots  } from  'react-loader-spinner'
 
-export default function Button({children,size,...otherProps}){
+export default function Button({children,size,disabled,...otherProps}){
 
     return(
-        <Botao {...otherProps} size={size}>{children}</Botao>
+        <Botao {...otherProps} disabled={disabled} size={size}>
+            {disabled?(
+                <ThreeDots 
+                height="35px" 
+                width="80" 
+                radius="9"
+                color="#FFFFFF" 
+                 />
+            ):children}
+        </Botao>
     )
 }
 const Botao=styled.button`
@@ -22,6 +32,9 @@ align-items: center;
 justify-content: center;
 border:0;
 
+&:disabled {
+        opacity: 0.7;
+    }
 ${(props) => {
     if (props.size === 'medium') {
       return `

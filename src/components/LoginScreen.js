@@ -3,25 +3,37 @@ import Button from "./Button"
 import Input from "./Input"
 import logo from "./img/Logo.svg"
 import {useState} from "react"
-import { ThreeDots  } from  'react-loader-spinner'
+import { postLogin } from "../services/trackit"
+import { useParams,Link,useNavigate } from "react-router-dom";
+
 
 export default function LoginScreen(){
    const [email,setEmail]=useState('')
    const [password,setPassword]=useState('')
-   const [disabled,setDisabled]=useState('')
-   const [buttonInside,setButtonInside]=useState("Entrar")
+   const [disabled,setDisabled]=useState(false)
+   const navigate = useNavigate();
+   
    function Login(e){
         e.preventDefault();
         let body={email,password};
-        setDisabled('disabled');
+        setDisabled(true);
         console.log(body)
-        setButtonInside(<ThreeDots 
-            height="80" 
-            width="80" 
-            radius="9"
-            color="#FFFFFF" 
-             />)
-
+        postLogin(body)
+            
+            .then((answer)=>{
+                const token=answer.data.token;
+                const image=answer.data.image;
+                const authJSON = JSON.stringify({ token: token, image: image });
+                localStorage.setItem('trackit', authJSON);
+                alert("DEU BOA KRL")
+                navigate('/hoje');
+            })
+            .catch(() => {
+                alert("Email e/ou senha inválidos");
+                setDisabled(false);
+                setPassword("");
+                console.log(disabled)
+            })
 
    }
     return(
@@ -40,8 +52,8 @@ export default function LoginScreen(){
             onChange={e => setPassword(e.target.value)}>
             </Input>
             <Button
-            disabled={disabled}>{buttonInside}</Button>
-            <p>Não tem uma conta? Cadastre-se!</p>
+            disabled={disabled}>Entrar</Button>
+            <Link to={`/cadastro`}><p>Não tem uma conta? Cadastre-se!</p></Link>
             
         </Screen>
         
