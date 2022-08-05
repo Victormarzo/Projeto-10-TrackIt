@@ -4,7 +4,7 @@ import Input from "./Input"
 import logo from "./img/Logo.svg"
 import {useState} from "react"
 import { postLogin } from "../services/trackit"
-import { useParams,Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 
 export default function LoginScreen(){
@@ -26,7 +26,7 @@ export default function LoginScreen(){
                 const authJSON = JSON.stringify({ token: token, image: image });
                 localStorage.setItem('trackit', authJSON);
                 alert("DEU BOA KRL")
-                navigate('/hoje');
+                navigate('/historico');
             })
             .catch(() => {
                 alert("Email e/ou senha inválidos");
