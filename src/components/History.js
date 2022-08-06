@@ -16,6 +16,8 @@ export default function History(){
 }
 const Conteudo=styled.div`
     width: 100vw;
+    
+    
 `
 const Space=styled.div`
     height:18px

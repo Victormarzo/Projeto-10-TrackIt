@@ -11,9 +11,20 @@ function postLogin(body){
     const promise = axios.post(`${BASE_URL}/auth/login`, body);
     return promise;
 }
+function createHabit(body){
+  const config=createHeaders();
+  const promise = axios.post(`${BASE_URL}/habits`, body,config);
+  return promise;
+}
+function listHabit(){
+  const config=createHeaders();
+  const promise = axios.get(`${BASE_URL}/habits`,config);
+  return promise;
 
+
+}
 function createHeaders() {
-    const auth = localStorage.getItem("trackit");
+    const auth = JSON.parse(localStorage.getItem("trackit"));
     const config = {
       headers: {
         Authorization: `Bearer ${auth.token}`
@@ -23,4 +34,4 @@ function createHeaders() {
     return config;
   }
 
-  export {postSignUp, postLogin}
+  export {postSignUp, postLogin,listHabit,createHabit}

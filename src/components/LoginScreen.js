@@ -3,7 +3,7 @@ import Button from "./Button"
 import Input from "./Input"
 import logo from "./img/Logo.svg"
 import {useState} from "react"
-import { postLogin } from "../services/trackit"
+import { postLogin} from "../services/trackit"
 import { Link,useNavigate } from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ export default function LoginScreen(){
    const [disabled,setDisabled]=useState(false)
    const navigate = useNavigate();
    
-   function Login(e){
+   function login(e){
         e.preventDefault();
         let body={email,password};
         setDisabled(true);
@@ -25,7 +25,7 @@ export default function LoginScreen(){
                 const image=answer.data.image;
                 const authJSON = JSON.stringify({ token: token, image: image });
                 localStorage.setItem('trackit', authJSON);
-                alert("DEU BOA KRL")
+                
                 navigate('/historico');
             })
             .catch(() => {
@@ -37,7 +37,7 @@ export default function LoginScreen(){
 
    }
     return(
-        <Screen onSubmit={Login}>
+        <Screen onSubmit={login}>
             <img src={logo}></img>
             <Input placeholder="email"
             required type="email" 
@@ -60,10 +60,6 @@ export default function LoginScreen(){
     )
 }
 
-const Week=styled.div`
-    display: flex;
-
-`
 const Screen=styled.form`
     
   display:flex;

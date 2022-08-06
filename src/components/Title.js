@@ -10,6 +10,6 @@ const Titles=styled.div `
     font-size: 22.976px;
     line-height: 29px;
     color: #126BA5;
-    margin-top:100px;
+    
     margin-left:17px
 `

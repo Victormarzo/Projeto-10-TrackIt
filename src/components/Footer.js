@@ -41,6 +41,7 @@ const Menu=styled.div`
     bottom: 0;
     padding-left: 30px;
     padding-right: 30px;
+    background-color: #ffffff;
     p{
         font-style: normal;
     font-weight: 400;
@@ -48,6 +49,7 @@ const Menu=styled.div`
     line-height: 22px;
     
     color: #52B6FF;
+    
     
     }
 `

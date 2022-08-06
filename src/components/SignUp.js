@@ -15,7 +15,7 @@ export default function SignUp(){
    const [image,setImage]=useState('')
    const navigate = useNavigate();
     
-   function SignIn(e){
+   function signIn(e){
         e.preventDefault();
         let body={email,password,image,name};
         setDisabled('disabled');
@@ -39,7 +39,7 @@ export default function SignUp(){
 
    }
     return(
-        <Screen onSubmit={SignIn}>
+        <Screen onSubmit={signIn}>
             <img src={logo}></img>
             
             <Input disabled={disabled}
