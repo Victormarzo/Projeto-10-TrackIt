@@ -17,7 +17,7 @@ export default function LoginScreen(){
         e.preventDefault();
         let body={email,password};
         setDisabled(true);
-        console.log(body)
+        
         postLogin(body)
             
             .then((answer)=>{
@@ -32,7 +32,7 @@ export default function LoginScreen(){
                 alert("Email e/ou senha inválidos");
                 setDisabled(false);
                 setPassword("");
-                console.log(disabled)
+                
             })
 
    }

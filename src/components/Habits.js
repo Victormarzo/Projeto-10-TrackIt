@@ -14,7 +14,7 @@ import CreateHabit from "./CreateHabit";
 
 
 export default function Habits(){
-    console.log("Habits renderizou")
+    
     const [habitList,setHabitList]=useState(null);
     const [newHabit,setNewHabit]=useState(false);
     const [getHabits,setGetHabits]=useState(false);

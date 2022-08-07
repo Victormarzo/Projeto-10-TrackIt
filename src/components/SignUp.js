@@ -19,14 +19,14 @@ export default function SignUp(){
         e.preventDefault();
         let body={email,password,image,name};
         setDisabled('disabled');
-        console.log(body);
+        
         postSignUp(body)
         .then((answer)=>{
             const token=answer.data.token;
             const image=answer.data.image;
             const authJSON = JSON.stringify({ token: token, image: image });
             localStorage.setItem('trackit', authJSON);
-            alert("DEU BOA KRL")
+            
             navigate('/');
         })
         .catch((error) => {

@@ -41,7 +41,7 @@ export default function Today(){
     
     let color="#8FC549"
     const dayNumber = dayjs().day();
-    console.log(percentage)
+    
     return(
     <>
     <Title>{weekDay[dayNumber].nome}, {dayjs().format('DD/MM')}</Title>

@@ -9,8 +9,8 @@ import { weekDay } from "./Weekday";
 export default function Habit({id,name,days,setGetHabits,getHabits}){
     
     function deleteIt(){
-        let confirmation=window.confirm("quer deletar?")
-        console.log(id)
+        let confirmation=window.confirm("Deletar hábito?")
+        
         if(confirmation){
             deleteHabit(id)
                 .then(() => {

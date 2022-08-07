@@ -7,7 +7,7 @@ import{createHabit} from "../services/trackit"
 import UserContext from "../contexts/UserContext"
 export default function CreateHabit ({setGetHabits,getHabits,newHabit,setNewHabit}){
     
-    console.log("RENDERIZOU O CREATE")
+    
     const weekDay=[
         {dia:"D",index:0},
         {dia:"S",index:1},
