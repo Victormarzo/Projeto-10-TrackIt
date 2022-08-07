@@ -1,10 +1,36 @@
 import styled from "styled-components"
 import Tik from "./img/Tik.svg"
-export default function Checkbox({done}){
+import { checkHabit, uncheckHabit } from "../services/trackit"
+export default function Checkbox({done,id,setRefresh,refresh}){
+    function check(){
+        
+        if(done==true){
+            
+            uncheckHabit(id)
+            .catch((error) => {
+                console.log(error);
+            })
+            .then(() => {
+                setRefresh(!refresh);
+            });
+        }else{
+            checkHabit(id)
+            .then(() => {
+                setRefresh(!refresh);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            
+        }
+
+
+
+    }
     return (
 
         <Box done={done}>
-            <img src={Tik}></img>
+            <img onClick={() => check()} src={Tik}></img>
         </Box>
     )
 }

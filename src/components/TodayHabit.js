@@ -1,19 +1,27 @@
 import styled from "styled-components"
-
+import { checkHabit, uncheckHabit } from "../services/trackit"
 import Checkbox from "./Checkbox"
 import Text from "./Text"
 
-export default function TodayHabit({id,name,done,currentSequence,highestSequence}){
+export default function TodayHabit({id,name,done,currentSequence,highestSequence,refresh,setRefresh}){
+    let color='';
+    let colorh=''
 
+    if (done==true){
+        color="#8FC549"
+    }
+    if (currentSequence==highestSequence&&highestSequence!=0){
+        colorh="#8FC549"
+    }
 
     return(
     <Wrapper>
         <List>
         <Text>{name}</Text>
-        <p>Sequência atual:{currentSequence} dias</p>
-        <p>Seu recorde:{highestSequence} dias</p>
+        <Text color={color} small="s">Sequência atual:{currentSequence} dias</Text >
+        <Text color={colorh} small="s">Seu recorde:{highestSequence} dias</Text>
         </List>
-        <Checkbox done={done} ></Checkbox>
+        <Checkbox id={id} done={done} refresh={refresh} setRefresh={setRefresh} ></Checkbox>
     </Wrapper>
     
     

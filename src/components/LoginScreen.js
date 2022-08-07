@@ -26,7 +26,7 @@ export default function LoginScreen(){
                 const authJSON = JSON.stringify({ token: token, image: image });
                 localStorage.setItem('trackit', authJSON);
                 
-                navigate('/historico');
+                navigate('/hoje');
             })
             .catch(() => {
                 alert("Email e/ou senha inválidos");

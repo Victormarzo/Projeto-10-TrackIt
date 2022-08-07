@@ -13,10 +13,11 @@ import Today from "./Today";
 export default function App(){
     const [name,setName]=useState('');
     const [days,setDays]=useState([]);
+    const [percentage,setPercentage]=useState(0);
     return(
         <BrowserRouter>
          <GlobalStyle />
-            <UserContext.Provider value={{name,setDays,days,setName}}>
+            <UserContext.Provider value={{name,setDays,days,setName,percentage,setPercentage}}>
             <Routes>
                 <Route path="/" element={<LoginScreen/>}/>
                 <Route path="/cadastro" element={<SignUp/>}/>
