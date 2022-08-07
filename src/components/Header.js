@@ -23,6 +23,7 @@ const Menu=styled.div`
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    z-index: 1;
     padding-left: 18px;
     padding-right: 18px;
 `

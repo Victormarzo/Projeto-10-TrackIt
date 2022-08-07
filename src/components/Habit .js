@@ -2,8 +2,10 @@ import styled from "styled-components";
 import Delete from "./img/Delete.svg";
 import Day from "./Day";
 import Text from "./Text";
+import { deleteHabit } from "../services/trackit";
 
-export default function Habit({id,name,days}){
+
+export default function Habit({id,name,days,setGetHabits,getHabits}){
     const weekDay=[
         {dia:"D",index:0},
         {dia:"S",index:1},
@@ -13,13 +15,25 @@ export default function Habit({id,name,days}){
         {dia:"S",index:5},
         {dia:"S",index:6},
     ]
+
+    function deleteIt(){
+        let confirmation=window.confirm("quer deletar?")
+        console.log(id)
+        if(confirmation){
+            deleteHabit(id)
+                .then(() => {
+                setGetHabits(!getHabits);
+            });
+        }}
     return(
     
     <Wrapper>
     <Text>{name}</Text>
     
     
-    <img src={Delete}/>
+    <img onClick={() => {
+                deleteIt()
+            }} src={Delete}/>
     <Week> {weekDay.map((value)=>
         <Day 
         index={value.index} 

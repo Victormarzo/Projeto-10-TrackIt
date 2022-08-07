@@ -4,20 +4,15 @@ import {useState} from "react"
 
 export default function Day({view,children,index,lista,days,setDays}){
     
-    
     const [selected,setSelected]=useState(false);
-    
     let avaliable;
     function list(){
-        
         if(days.includes(index)){
             let x=days.filter((value)=>value!==index)
                 setDays(x);
         }else{
             setDays([...days,index])
-            
         }
-
     }
     if(lista.includes(index)){
         
@@ -28,21 +23,14 @@ export default function Day({view,children,index,lista,days,setDays}){
         <Days   lista={lista} avaliable={avaliable} >{children}</Days>
     )
 }else{
-
-
-    
     return(
         <Days  onClick={() => {
                 setSelected(!selected);
                 list()
             }} 
-            
-            
             selected={selected}  days={days} lista={lista}  >{children}</Days>
     )
 }
-
-
 }
 
 const Days=styled.div`

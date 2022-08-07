@@ -18,10 +18,7 @@ export default function Habits(){
     const [habitList,setHabitList]=useState(null);
     const [newHabit,setNewHabit]=useState(false);
     const [getHabits,setGetHabits]=useState(false);
-    
-    
-    
-   
+          
     useEffect(()=>{
         listHabit()
             .catch((error)=>{
@@ -31,13 +28,7 @@ export default function Habits(){
                 setHabitList(answer.data)
                 
             })
-    },[])
-    
-
-    
-    
-    
-    
+    },[getHabits])  
     
     return(
 
@@ -45,23 +36,26 @@ export default function Habits(){
     <Space>
         <Title>Meus hábitos</Title>   
         <Button onClick={() => {
-                setNewHabit(!newHabit);
+                setNewHabit(!newHabit)
+                
                 
             
             }} size="tiny">+</Button>
     </Space>
    
-   
-   <CreateHabit 
+   {newHabit?(<CreateHabit 
     setGetHabits={setGetHabits} 
     getHabits={getHabits} 
-     ></CreateHabit>
+    setNewHabit={setNewHabit}
+    newHabit={newHabit}
     
-    
-    
+     ></CreateHabit>):(<></>)}
+   
     
     {habitList? (habitList.length!=0?(<div>{habitList.map((value)=>
         <Habit id={value.id}
+           setGetHabits={setGetHabits} 
+            getHabits={getHabits}
             days={value.days}
             name={value.name}
         ></Habit>
@@ -75,7 +69,7 @@ export default function Habits(){
 </>
     );
 }
-const Space=styled.form`
+const Space=styled.div`
     margin-bottom:18px;
     display: flex;
     justify-content: space-between;

@@ -20,9 +20,18 @@ function listHabit(){
   const config=createHeaders();
   const promise = axios.get(`${BASE_URL}/habits`,config);
   return promise;
-
-
 }
+function deleteHabit(id){
+  const config=createHeaders();
+  const promise = axios.delete(`${BASE_URL}/habits/${id}`,config);
+  return promise;
+}
+function listHabitToday(){
+  const config=createHeaders();
+  const promise = axios.get(`${BASE_URL}/habits/today`,config);
+  return promise;
+}
+
 function createHeaders() {
     const auth = JSON.parse(localStorage.getItem("trackit"));
     const config = {
@@ -34,4 +43,4 @@ function createHeaders() {
     return config;
   }
 
-  export {postSignUp, postLogin,listHabit,createHabit}
+  export {postSignUp, postLogin,listHabit,createHabit,deleteHabit,listHabitToday}

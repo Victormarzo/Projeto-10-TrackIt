@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import styled from "styled-components"
 import Button from "./Button"
 import Day from "./Day"
 import Input from "./Input"
 import{createHabit} from "../services/trackit"
-
-export default function CreateHabit ({setGetHabits,getHabits}){
+import UserContext from "../contexts/UserContext"
+export default function CreateHabit ({setGetHabits,getHabits,newHabit,setNewHabit}){
+    
     console.log("RENDERIZOU O CREATE")
     const weekDay=[
         {dia:"D",index:0},
@@ -16,28 +17,30 @@ export default function CreateHabit ({setGetHabits,getHabits}){
         {dia:"S",index:5},
         {dia:"S",index:6},
     ]
-    const [name,setName]=useState('');
+    const {name,setName}=useContext(UserContext);
     const [disabled,setDisabled]=useState(false);
-    const [days,setDays]=useState([]);
-
+    const {days,setDays}=useContext(UserContext);
+    const[view,setView]=useState("")
     function create(e){
         e.preventDefault();
         let body={name,days};
         console.log(body)
-        setDisabled('disabled');
+        setDisabled(!disabled);
+        setView("s");
         createHabit(body)
-        setGetHabits(!getHabits)
         .then((answer)=>{
-        
-            alert("DEU BOA KRL");
-            setDisabled('');
+            setDisabled(!disabled);
+            
+            setDays([]);
+            setName('');
+            setNewHabit(!newHabit)
+            setGetHabits(!getHabits);
+            
         })
         .catch((error) => {
-            alert("deu erro");
-            
-            
+            alert("Deu erro");    
+            setDisabled(!disabled);     
         })
-
     }
         
     return(
@@ -53,28 +56,29 @@ export default function CreateHabit ({setGetHabits,getHabits}){
         <Day 
             index={value.index} 
             lista={''}
-            view={''}
+            view={view}
             days={days}
             setDays={setDays}
         key={value.index}>{value.dia}</Day>
    )}</Week>
         <Wrapper>
-            <P >Cancelar</P>
-            <Button type="submit" size="medium">Salvar</Button>
-
-
+            <P onClick={() => {
+                setNewHabit(!newHabit);
+                
+            
+            }}>Cancelar</P>
+            <Button disabled={disabled} type="submit" size="medium">Salvar</Button>
         </Wrapper>
         </Create>
-
     )
 
 }
 const Wrapper=styled.div`
-display: flex;
-align-items: center ;
-justify-content: end  ;
-margin-right: 16px;
-margin-top:29px;
+    display: flex;
+    align-items: center ;
+    justify-content: end  ;
+    margin-right: 16px;
+    margin-top:29px;
 
 `
 
