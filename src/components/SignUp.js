@@ -4,7 +4,7 @@ import Input from "./Input"
 import logo from "./img/Logo.svg"
 import {useState} from "react"
 import { postSignUp } from "../services/trackit"
-import { useParams,Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 
 export default function SignUp(){
@@ -29,7 +29,7 @@ export default function SignUp(){
             
             navigate('/');
         })
-        .catch((error) => {
+        .catch(() => {
             alert("Email e/ou senha inválidos");
             setDisabled('');
             setPassword("");
@@ -40,7 +40,7 @@ export default function SignUp(){
    }
     return(
         <Screen onSubmit={signIn}>
-            <img src={logo}></img>
+            <img src={logo} alt="slogo"></img>
             
             <Input disabled={disabled}
                 required type="email" 
@@ -72,10 +72,6 @@ export default function SignUp(){
     )
 }
 
-const Week=styled.div`
-    display: flex;
-
-`
 const Screen=styled.form`
     
   display:flex;

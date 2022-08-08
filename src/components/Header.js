@@ -5,9 +5,9 @@ export default function Header({profile}){
  return(
     <Menu>
         
-        <img src={logo}></img>
+        <img src={logo} alt="logo"></img>
         <ProfileImg>
-        <img src={profile}></img>
+        <img src={profile} alt="profile"></img>
         </ProfileImg>
     </Menu>
     )

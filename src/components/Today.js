@@ -14,12 +14,13 @@ export default function Today(){
     const {percentage,setPercentage}=useContext(UserContext);
     const [subtitle,setSubtitle]=useState('')
     const [refresh,setRefresh]=useState(false)
-    let finished;
-    let percentageFinished;
-    
+    let color="#8FC549"
+    const dayNumber = dayjs().day();
     
 
     useEffect(()=>{
+        let finished;
+        let percentageFinished;
         listHabitToday()
             .catch((error)=>{
                 alert(error)
@@ -39,8 +40,7 @@ export default function Today(){
             
     },[percentage,refresh])  
     
-    let color="#8FC549"
-    const dayNumber = dayjs().day();
+    
     
     return(
     <>
@@ -50,9 +50,10 @@ export default function Today(){
     
     
     <Wrapper>
-    {today?(today.length==0?(<></>):(today.map((value)=>
+    {today?(today.length===0?(<></>):(today.map((value)=>
         <TodayHabit 
             id={value.id}
+            key={value.id}
             done={value.done}
             currentSequence={value.currentSequence}
             highestSequence={value.highestSequence}

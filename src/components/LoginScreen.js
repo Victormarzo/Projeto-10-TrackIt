@@ -38,7 +38,7 @@ export default function LoginScreen(){
    }
     return(
         <Screen onSubmit={login}>
-            <img src={logo}></img>
+            <img src={logo} alt="logos"></img>
             <Input placeholder="email"
             required type="email" 
             value={email}

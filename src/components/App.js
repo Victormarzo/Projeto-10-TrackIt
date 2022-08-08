@@ -7,7 +7,6 @@ import GlobalStyle from "../styles/globalStyles";
 import Habits from "./Habits";
 import { useState } from "react";
 import UserContext from "../contexts/UserContext"
-import { weekDay } from "./Weekday";
 import Today from "./Today";
 
 export default function App(){

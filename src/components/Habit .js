@@ -25,7 +25,8 @@ export default function Habit({id,name,days,setGetHabits,getHabits}){
     
     <img onClick={() => {
                 deleteIt()
-            }} src={Delete}/>
+            }} src={Delete}
+            alt="delete"/>
     <Week> {weekDay.map((value)=>
         <Day 
         index={value.index} 

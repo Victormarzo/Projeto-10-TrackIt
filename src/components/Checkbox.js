@@ -3,9 +3,7 @@ import Tik from "./img/Tik.svg"
 import { checkHabit, uncheckHabit } from "../services/trackit"
 export default function Checkbox({done,id,setRefresh,refresh}){
     function check(){
-        
-        if(done==true){
-            
+        if(done===true){
             uncheckHabit(id)
             .catch((error) => {
                 console.log(error);
@@ -21,16 +19,12 @@ export default function Checkbox({done,id,setRefresh,refresh}){
             .catch((error) => {
                 console.log(error);
             })
-            
         }
-
-
-
     }
     return (
 
         <Box done={done}>
-            <img onClick={() => check()} src={Tik}></img>
+            <img onClick={() => check()} alt ="Tik" src={Tik}></img>
         </Box>
     )
 }

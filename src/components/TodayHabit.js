@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { checkHabit, uncheckHabit } from "../services/trackit"
 import Checkbox from "./Checkbox"
 import Text from "./Text"
 
@@ -7,10 +6,10 @@ export default function TodayHabit({id,name,done,currentSequence,highestSequence
     let color='';
     let colorh=''
 
-    if (done==true){
+    if (done===true){
         color="#8FC549"
     }
-    if (currentSequence==highestSequence&&highestSequence!=0){
+    if (currentSequence===highestSequence&&highestSequence!==0){
         colorh="#8FC549"
     }
 

@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import Button from "./Button";
 import Text from "./Text"
-import Delete from "./img/Delete.svg"
 import Title from "./Title"
-import{createHabit,listHabit} from "../services/trackit"
+import{listHabit} from "../services/trackit"
 import { useEffect, useState } from "react";
 import Habit from "./Habit ";
-import Input from "./Input";
-import Day from "./Day";
 import CreateHabit from "./CreateHabit";
 
 
@@ -52,7 +49,7 @@ export default function Habits(){
      ></CreateHabit>):(<></>)}
    
     
-    {habitList? (habitList.length!=0?(<div>{habitList.map((value)=>
+    {habitList? (habitList.length!==0?(<div>{habitList.map((value)=>
         <Habit id={value.id}
         key={value.id}
            setGetHabits={setGetHabits} 
