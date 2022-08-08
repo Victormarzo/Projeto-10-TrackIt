@@ -55,7 +55,7 @@ export default function CreateHabit ({setGetHabits,getHabits,newHabit,setNewHabi
             <Week>{weekDay.map((value)=>
         <Day 
             index={value.index} 
-            lista={''}
+            lista={days}
             view={view}
             days={days}
             setDays={setDays}

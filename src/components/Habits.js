@@ -54,6 +54,7 @@ export default function Habits(){
     
     {habitList? (habitList.length!=0?(<div>{habitList.map((value)=>
         <Habit id={value.id}
+        key={value.id}
            setGetHabits={setGetHabits} 
             getHabits={getHabits}
             days={value.days}

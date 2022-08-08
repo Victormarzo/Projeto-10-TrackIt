@@ -13,6 +13,7 @@ export default function Day({view,children,index,lista,days,setDays}){
         }else{
             setDays([...days,index])
         }
+        console.log(lista)
     }
     if(lista.includes(index)){
         
@@ -28,7 +29,7 @@ export default function Day({view,children,index,lista,days,setDays}){
                 setSelected(!selected);
                 list()
             }} 
-            selected={selected}  days={days} lista={lista}  >{children}</Days>
+            selected={selected}  avaliable={avaliable} days={days} lista={lista}  >{children}</Days>
     )
 }
 }
